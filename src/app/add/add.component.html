@@ -1,0 +1,31 @@
+<div class="container" style="margin: 30px auto;">
+  <h2>Category Form</h2>
+  <form (ngSubmit)="addCategory()" [formGroup]="categoryForm" style=" margin: 30px 30px;">
+    <div class="form-group">
+      <label for="inputCategory">Category</label>
+      <input type="text" class="form-control" id="inputCategory" placeholder="Category" formControlName="categoryName">
+    </div>
+    <div *ngIf="loadingCategory" class="loader"></div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+
+  <h2>Ingredients Form</h2>
+  <form (ngSubmit)="addIngredients()" [formGroup]="ingredientForm" style="margin: 30px 30px;">
+    <div class="form-group">
+      <label for="inputIngredientCategory">Select Category</label>
+      <select class="form-control" id="inputIngredientCategory" formControlName="ingredientCategoryName">
+        <option *ngFor="let category of categoryList | async">{{category.categoryName}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="inputPortionSize">Portion Size</label>
+      <input type="number" class="form-control" id="inputPortionSize" placeholder="Portion Size" formControlName="portionSize">
+    </div>
+    <div class="form-group">
+      <label for="inputIngredientName">Name</label>
+      <input type="text" class="form-control" id="inputIngredientName" placeholder="Ingredient Name" formControlName="ingredientName">
+    </div>
+    <div *ngIf="loadingIngredient" class="loader"></div>
+    <button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+<div class="container" style="margin: 30px auto">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let ingredient of ingredientList | async">
+      {{ingredient.ingredientName}} -
+      <!-- {{getCategoryName('')}} -->
+      <!-- {{ingredient.ingredientCategoryName}} -->
+      <app-ingredient-category [categoryRef]="ingredient.ingredientCategoryName"></app-ingredient-category>
+      {{ingredient.portionSize}}
+    </li>
+  </ul>
+</div>
